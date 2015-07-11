@@ -157,7 +157,7 @@ main (int argc, char **argv)
 	kp = kvm_getprocs(kmem, KERN_PROC_PID, pid, &cnt);
 	if (kp == NULL || cnt != 1)
 		err(EXIT_FAILURE, "kvm_getprocs()");
-	printf("kmin: 0x%x, kmax: 0x%x\n", VM_MIN_KERNEL_ADDRESS,
+	printf("kmin   : 0x%lx, kmax: 0x%lx\n", VM_MIN_KERNEL_ADDRESS,
 	    VM_MAX_KERNEL_ADDRESS);
 	error = vm_process(kp);
 	if (error != 0)
