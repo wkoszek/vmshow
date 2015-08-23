@@ -14,13 +14,10 @@ Just run:
 
 # How to run
 
-Run the program, you must be root:
+Run the program, you must be root, and you must pass the PID to the program
+as the 1st argument:
 
-	sudo
-
-You must pass the PID to the program as the 1st argument:
-
-	./vmshow <pid>
+	sudo ./vmshow <pid>
 
 For example:
 
