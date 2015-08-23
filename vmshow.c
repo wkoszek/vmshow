@@ -46,9 +46,15 @@
 #include <sysexits.h>
 #include <unistd.h>
 
-#define ADDR_ISKERN(a)						\
-	((((u_long) a) >= VM_MIN_KERNEL_ADDRESS)	&&	\
-	 (((u_long) a) <= VM_MAX_KERNEL_ADDRESS))
+/*
+ * This assert used to work on old 32-bit FreeBSD
+ * but fails on FreeBSD 10.1/64-bit.
+ */
+#define ASSERT_ADDR_ISKERN(a)	do {				\
+	break;							\
+	assert((((u_long) a) >= VM_MIN_KERNEL_ADDRESS)	&&	\
+	 (((u_long) a) <= VM_MAX_KERNEL_ADDRESS));		\
+} while (0)
 
 static kvm_t *kmem;
 
@@ -86,7 +92,7 @@ vm_process(struct kinfo_proc *proc)
 	assert(proc != NULL && kmem != NULL);
 	addr = (unsigned long)proc->ki_vmspace;
 	printf("vmspace: 0x%lx\n", addr);
-	assert(ADDR_ISKERN(addr));
+	ASSERT_ADDR_ISKERN(addr);
 	ret = kvm_read(kmem, addr, &vm, sizeof(vm));
 	assert(ret == sizeof(vm));
         printf("swrss: %lu\n", (u_long)vm.vm_swrss);
