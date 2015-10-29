@@ -64,3 +64,8 @@ PID by the shell).
 	FreeBSD vagrant-freebsd-101-amd64 10.1-RELEASE FreeBSD 10.1-RELEASE #0
 	r274401: Tue Nov 11 21:02:49 UTC 2014
 	root@releng1.nyi.freebsd.org:/usr/obj/usr/src/sys/GENERIC  amd64
+
+# Author
+
+- Wojciech Adam Koszek, [wojciech@koszek.com](mailto:wojciech@koszek.com)
+- [http://www.koszek.com](http://www.koszek.com)
